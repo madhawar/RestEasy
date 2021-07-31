@@ -76,31 +76,52 @@ public class TestCases {
 
     @Test
     public void testPost() {
-        Map<String,String> requestParams = new HashMap<String,String>();
-        requestParams.put("DOMAIN", "WAPP");
-        requestParams.put("FLOW", "CREATE_FLOW");
-        requestParams.put("PRICE_DATE", "2020-08-18");
-        requestParams.put("CHANNEL", "OFFLINE");
-        requestParams.put("REQUESTED_FLOW", "CREATE_FLOW");
-        requestParams.put("COUNTRY_LIST", "DEFAULT");
-        requestParams.put("QUOTED_METHOD", "ONLINE");
-        requestParams.put("FROM_LOCATION", "UK1");
-        requestParams.put("CANCELLATION_COVER", "5000");
-        requestParams.put("BAGGAGE_COVER", "500");
-        requestParams.put("TRIP_EXCESS", "50");
-        requestParams.put("FCDO_COVER", "4");
-        requestParams.put("TDE_COVER", "Y");
-        requestParams.put("GADGET_COVER", "1");
-        requestParams.put("KEY", "ACTIVITY");
-        requestParams.put("API_TYPE", "1");
-        requestParams.put("FACTOR_POPUP", "N");
-        requestParams.put("CALLBACKURL", "https://redmine.interserv.co.uk?price/notify");
+        Map<String,Object> jsonBodyUsingMap = new HashMap<String,Object>();
+        jsonBodyUsingMap.put("DOMAIN", "WAPP");
+        jsonBodyUsingMap.put("FLOW", "CREATE_FLOW");
+        jsonBodyUsingMap.put("PRICE_DATE", "2020-08-18");
+        jsonBodyUsingMap.put("CHANNEL", "OFFLINE");
+        jsonBodyUsingMap.put("REQUESTED_FLOW", "CREATE_FLOW");
+        jsonBodyUsingMap.put("COUNTRY_LIST", "DEFAULT");
+        jsonBodyUsingMap.put("QUOTED_METHOD", "ONLINE");
+        jsonBodyUsingMap.put("FROM_LOCATION", "UK1");
+        jsonBodyUsingMap.put("CANCELLATION_COVER", "5000");
+        jsonBodyUsingMap.put("BAGGAGE_COVER", "500");
+        jsonBodyUsingMap.put("TRIP_EXCESS", "50");
+        jsonBodyUsingMap.put("FCDO_COVER", "4");
+        jsonBodyUsingMap.put("TDE_COVER", "Y");
+        jsonBodyUsingMap.put("GADGET_COVER", "1");
+        jsonBodyUsingMap.put("KEY", "ACTIVITY");
+        jsonBodyUsingMap.put("API_TYPE", "1");
+        jsonBodyUsingMap.put("FACTOR_POPUP", "N");
+        jsonBodyUsingMap.put("CALLBACKURL", "https://redmine.interserv.co.uk?price/notify");
+
+        Map<String,Object> propertyMap = new HashMap<String,Object>();
+        propertyMap.put("ID", "");
+        propertyMap.put("AGE", "");
+        propertyMap.put("MEDICAL_CONDITIONS", "");
+        propertyMap.put("SURGERY_COUNT", "");
+        propertyMap.put("FTE", "");
+        propertyMap.put("SURGERY_OTHER_SELECTED", "");
+        propertyMap.put("SCREENING_STATUS", "");
+
+        Map<String,String> screeningMap = new HashMap<>();
+        screeningMap.put("SCREENING_ID", "");
+        screeningMap.put("SCORE", "");
+        screeningMap.put("IS_WS", "");
+        screeningMap.put("IS_AMT", "");
+        screeningMap.put("REGION_ID", "");
+
+        propertyMap.put("SCREENING", screeningMap);
+        jsonBodyUsingMap.put("PROPERTY", propertyMap);
 
         given()
                 .contentType(ContentType.JSON)
-                .body(requestParams)
+                .body(jsonBodyUsingMap)
+                .log()
+                .all()
                 .when()
-                .post("/price/wapp")
+                .post(environment + "/price/get")
                 .then()
                 .statusCode(200)
                 .log()
