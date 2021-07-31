@@ -2,6 +2,7 @@ package tests;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import io.restassured.http.ContentType;
@@ -115,9 +116,12 @@ public class TestCases {
         propertyMap.put("SCREENING", screeningMap);
         jsonBodyUsingMap.put("PROPERTY", propertyMap);
 
+        Gson gson = new Gson();
+        JsonObject requestBody = gson.toJsonTree(jsonBodyUsingMap).getAsJsonObject();
+
         given()
                 .contentType(ContentType.JSON)
-                .body(jsonBodyUsingMap)
+                .body(requestBody)
                 .log()
                 .all()
                 .when()
