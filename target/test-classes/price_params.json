@@ -1,8 +1,7 @@
 {
-  "priceParams": [
+  "priceMatrix": [
     {
-      "existingDate": "2020-08-01",
-      "newDate": "2020-08-03"
+      "token": "2262318"
     }
   ]
 }

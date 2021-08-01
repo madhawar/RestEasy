@@ -2,7 +2,6 @@ package tests;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import io.restassured.http.ContentType;
@@ -15,6 +14,7 @@ import utilities.Log;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class TestCases {
+public class TestCases<result> {
     private static final String environment = System.getProperty("environment");
 
     @DataProvider(name ="Excel")
@@ -76,60 +76,81 @@ public class TestCases {
     }
 
     @Test
-    public void testPost() {
-        Map<String,Object> jsonBodyUsingMap = new HashMap<String,Object>();
-        jsonBodyUsingMap.put("DOMAIN", "WAPP");
-        jsonBodyUsingMap.put("FLOW", "CREATE_FLOW");
-        jsonBodyUsingMap.put("PRICE_DATE", "2020-08-18");
-        jsonBodyUsingMap.put("CHANNEL", "OFFLINE");
-        jsonBodyUsingMap.put("REQUESTED_FLOW", "CREATE_FLOW");
-        jsonBodyUsingMap.put("COUNTRY_LIST", "DEFAULT");
-        jsonBodyUsingMap.put("QUOTED_METHOD", "ONLINE");
-        jsonBodyUsingMap.put("FROM_LOCATION", "UK1");
-        jsonBodyUsingMap.put("CANCELLATION_COVER", "5000");
-        jsonBodyUsingMap.put("BAGGAGE_COVER", "500");
-        jsonBodyUsingMap.put("TRIP_EXCESS", "50");
-        jsonBodyUsingMap.put("FCDO_COVER", "4");
-        jsonBodyUsingMap.put("TDE_COVER", "Y");
-        jsonBodyUsingMap.put("GADGET_COVER", "1");
-        jsonBodyUsingMap.put("KEY", "ACTIVITY");
-        jsonBodyUsingMap.put("API_TYPE", "1");
-        jsonBodyUsingMap.put("FACTOR_POPUP", "N");
-        jsonBodyUsingMap.put("CALLBACKURL", "https://redmine.interserv.co.uk?price/notify");
+    public void testPostFull() {
+        int min = 1000;
+        int max = 9999;
+        int num = (int) (Math.random()*(max-min+1)+min);
 
-        Map<String,Object> propertyMap = new HashMap<String,Object>();
-        propertyMap.put("ID", "");
-        propertyMap.put("AGE", "");
-        propertyMap.put("MEDICAL_CONDITIONS", "");
-        propertyMap.put("SURGERY_COUNT", "");
-        propertyMap.put("FTE", "");
-        propertyMap.put("SURGERY_OTHER_SELECTED", "");
-        propertyMap.put("SCREENING_STATUS", "");
+        List<Map<String, Object>> screeningList = new ArrayList<>();
+        Map<String,Object> screeningMap = new HashMap<String, Object>();
+        screeningMap.put("SCREENING_ID", 1);
+        screeningMap.put("SCORE", 2);
+        screeningMap.put("IS_WS", "Y");
+        screeningMap.put("IS_AMT", "Y");
+        screeningMap.put("REGION_ID", 1);
+        screeningList.add(screeningMap);
 
-        Map<String,String> screeningMap = new HashMap<>();
-        screeningMap.put("SCREENING_ID", "");
-        screeningMap.put("SCORE", "");
-        screeningMap.put("IS_WS", "");
-        screeningMap.put("IS_AMT", "");
-        screeningMap.put("REGION_ID", "");
+        List<Map<String, Object>> propertyList = new ArrayList<>();
+        Map<String,Object> propertyMap = new HashMap<String, Object>();
+        propertyMap.put("ID", num);
+        propertyMap.put("AGE", 80);
+        propertyMap.put("MEDICAL_CONDITIONS", "TB|Coldsore");
+        propertyMap.put("SURGERY_COUNT", 1);
+        propertyMap.put("FTE", "N");
+        propertyMap.put("SURGERY_OTHER_SELECTED", "Y");
+        propertyMap.put("SCREENING_STATUS", "ACCEPTED");
+        propertyMap.put("SCREENING", screeningList);
+        propertyList.add(propertyMap);
 
-        propertyMap.put("SCREENING", screeningMap);
-        jsonBodyUsingMap.put("PROPERTY", propertyMap);
+        Map<String,Object> jsonBody = new HashMap<String,Object>();
+        jsonBody.put("DOMAIN", "WAPP");
+        jsonBody.put("FLOW", "CREATE_FLOW");
+        jsonBody.put("PRICE_DATE", "2020-08-18");
+        jsonBody.put("CHANNEL", "OFFLINE");
+        jsonBody.put("REQUESTED_FLOW", "CREATE_FLOW");
+        jsonBody.put("COUNTRY_LIST", "DEFAULT");
+        jsonBody.put("QUOTED_METHOD", "ONLINE");
+        jsonBody.put("FROM_LOCATION", "UK1");
+        jsonBody.put("CANCELLATION_COVER", "5000");
+        jsonBody.put("BAGGAGE_COVER", "500");
+        jsonBody.put("TRIP_EXCESS", "50");
+        jsonBody.put("FCDO_COVER", "4");
+        jsonBody.put("TDE_COVER", "Y");
+        jsonBody.put("GADGET_COVER", "1");
+        jsonBody.put("KEY", "ACTIVITY");
+        jsonBody.put("API_TYPE", "1");
+        jsonBody.put("FACTOR_POPUP", "N");
+        jsonBody.put("CALLBACKURL", "https://redmine.interserv.co.uk?price/notify");
+        jsonBody.put("PROPERTY", propertyList);
 
-        Gson gson = new Gson();
-        JsonObject requestBody = gson.toJsonTree(jsonBodyUsingMap).getAsJsonObject();
+        long telemetry = given()
+                .contentType(ContentType.JSON)
+                .body(jsonBody)
+                .when()
+                .post(environment + "/price/wapp")
+                .timeIn(TimeUnit.MILLISECONDS);
+                Log.info("Response time: " + String.valueOf(telemetry));
 
         given()
                 .contentType(ContentType.JSON)
-                .body(requestBody)
+                .body(jsonBody)
                 .log()
                 .all()
                 .when()
-                .post(environment + "/price/get")
+                .post(environment + "/price/wapp")
                 .then()
                 .statusCode(200)
                 .log()
                 .all();
+
+        given()
+                .contentType(ContentType.JSON)
+                .body(jsonBody)
+                .when()
+                .post(environment + "/price/wapp")
+                .then()
+                .assertThat()
+                .body("status", equalTo("success"));
     }
 
 }
