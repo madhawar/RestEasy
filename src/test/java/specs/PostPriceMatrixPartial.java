@@ -1,79 +1,30 @@
-package tests;
+package specs;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-import utilities.DataPOJO;
-import utilities.ExcelData;
-import utilities.Log;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.*;
-import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
+public class PostPriceMatrixPartial {
+    private static final String uri = System.getProperty("environment");
 
-public class TestCases<result> {
-    private static final String environment = System.getProperty("environment");
+    public RequestSpecification requestSpec;
+    public ResponseSpecification responseSpec;
 
-    @DataProvider(name ="Excel")
-    public Object[][] excelDP() throws IOException {
-        ExcelData excelData = new ExcelData();
-        return excelData.getData("src/test/resources/price_params.xlsx","wapp");
+    public void createResponseSpecification() {
+        responseSpec = new ResponseSpecBuilder()
+                .expectStatusCode(200)
+                .expectContentType(ContentType.JSON)
+                .build();
     }
 
-    @DataProvider(name ="JSON")
-    public Object[][] priceParams() throws FileNotFoundException {
-        JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/resources/price-params.json"));
-        JsonElement dataSet = jsonData.getAsJsonObject().get("priceParams");
-        List<DataPOJO> testData = new Gson().fromJson(dataSet, new TypeToken<List<DataPOJO>>() {}.getType());
-        Object[][] returnValue = new Object[testData.size()][1];
-        int index = 0;
-        for (Object[] each : returnValue) {
-            each[0] = testData.get(index++);
-        }
-        return returnValue;
-    }
-
-    @Test()
-    public void testGet() {
-        String url = environment + "/price-status?existingDate=2020-08-01&newDate=2020-08-03&domain=WAPP";
-
-        long telemetry = given()
-                .contentType(ContentType.JSON)
-                .when()
-                .get(url)
-                .timeIn(TimeUnit.MILLISECONDS);
-        Log.info("Response time: " + String.valueOf(telemetry));
-
-        given()
-                .contentType(ContentType.JSON)
-                .when()
-                .get(url)
-                .then()
-                .assertThat()
-                .statusCode(200)
-                .log()
-                .all();
-
-        given()
-                .contentType(ContentType.JSON)
-                .when()
-                .get(url)
-                .then()
-                .assertThat()
-                .body("result.startDate", equalTo("2020-07-20"));
-    }
-
-    @Test
-    public void testPostPartial() {
+    public void createRequestSpecification() {
         int min = 1000;
         int max = 9999;
         int num = (int) (Math.random()*(max-min+1)+min);
@@ -157,30 +108,13 @@ public class TestCases<result> {
         jsonBody.put("TDE_COVER", "Y");
         jsonBody.put("GADGET_COVER", "1");
         jsonBody.put("KEY", "ACTIVITY");
-//        jsonBody.put("API_TYPE", "1");
         jsonBody.put("FACTOR_POPUP", "Y");
-//        jsonBody.put("CALLBACKURL", "https://redmine.interserv.co.uk?price/notify");
         jsonBody.put("PROPERTY", propertyList);
 
-        long telemetry = given()
-                .contentType(ContentType.JSON)
-                .body(jsonBody)
-                .when()
-                .post(environment + "/price/wapp")
-                .timeIn(TimeUnit.MILLISECONDS);
-                Log.info("Response time: " + String.valueOf(telemetry));
-
-        given()
-                .contentType(ContentType.JSON)
-                .body(jsonBody)
-                .log()
-                .all()
-                .when()
-                .post(environment + "/price/wapp")
-                .then()
-                .statusCode(200)
-                .log()
-                .all();
+        requestSpec = new RequestSpecBuilder()
+                .setBaseUri(uri)
+                .setContentType(ContentType.JSON)
+                .setBody(jsonBody)
+                .build();
     }
-
 }

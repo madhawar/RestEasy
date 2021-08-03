@@ -4,24 +4,31 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
-import io.restassured.http.ContentType;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import specs.GetStatic;
 import utilities.DataPOJO;
+import utilities.ExcelData;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.HashMap;
+import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class PostFullPriceMatrix {
-    private static final String environment = System.getProperty("environment");
+public class TestPriceStatusAPI {
+    private static final String url = "/price-status";
+
+    @DataProvider(name ="ExcelData")
+    public Object[][] excelDP() throws IOException {
+        ExcelData excelData = new ExcelData();
+        return excelData.getData("src/test/resources/price_params.xlsx","test");
+    }
 
     @DataProvider(name ="JSON")
-    public Object[][] priceMatrix() throws FileNotFoundException {
+    public Object[][] jsonDP() throws FileNotFoundException {
         JsonElement jsonData = new JsonParser().parse(new FileReader("src/test/resources/price_params.json"));
         JsonElement dataSet = jsonData.getAsJsonObject().get("priceMatrix");
         List<DataPOJO> testData = new Gson().fromJson(dataSet, new TypeToken<List<DataPOJO>>() {}.getType());
@@ -33,19 +40,23 @@ public class PostFullPriceMatrix {
         return returnValue;
     }
 
-    @Test(dataProvider = "JSON")
-    public void fetchFullPrice(DataPOJO priceMatrix) {
-        Map<String,Object> jsonBody = new HashMap<String,Object>();
-        jsonBody.put("token", priceMatrix.getToken());
+    GetStatic getStatic = new GetStatic();
 
-        given()
-                .contentType(ContentType.JSON)
-                .body(jsonBody)
+    @Test()
+    public void priceStatusAPI() {
+        getStatic.createRequestSpecification();
+        getStatic.createResponseSpecification();
+
+        String startDate = given()
+                .spec(getStatic.requestSpec)
                 .when()
-                .post(environment + "/price/get")
+                .get(url)
                 .then()
-                .statusCode(200)
-                .log()
-                .all();
+                .spec(getStatic.responseSpec)
+                .extract()
+                .path("result.startDate" );
+
+        Assert.assertEquals(startDate, "2020-07-20");
     }
+
 }

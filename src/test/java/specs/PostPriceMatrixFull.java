@@ -1,26 +1,30 @@
-package tests;
+package specs;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
-import org.testng.annotations.Test;
-import utilities.Log;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
 
-import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static io.restassured.RestAssured.given;
+public class PostPriceMatrixFull {
+    private static final String uri = System.getProperty("environment");
 
-public class PostFullPrice {
-    private static final String environment = System.getProperty("environment");
+    public RequestSpecification requestSpec;
+    public ResponseSpecification responseSpec;
 
-    @Test
-    public void fetchFullPrice() {
+    public void createResponseSpecification() {
+        responseSpec = new ResponseSpecBuilder()
+                .expectStatusCode(200)
+                .expectContentType(ContentType.JSON)
+                .build();
+    }
+
+    public void createRequestSpecification() {
         int min = 1000;
         int max = 9999;
         int num = (int) (Math.random()*(max-min+1)+min);
@@ -67,33 +71,10 @@ public class PostFullPrice {
         jsonBody.put("CALLBACKURL", "https://redmine.interserv.co.uk?price/notify");
         jsonBody.put("PROPERTY", propertyList);
 
-        String matrixReference = given()
-                .contentType(ContentType.JSON)
-                .body(jsonBody)
-                .when()
-                .post(environment + "/price/get")
-                .then()
-                .contentType(ContentType.JSON)
-                .extract()
-                .path("result");
-        Log.info(matrixReference);
-
-        String jsonFilePath = "src/test/resources/price_params.json";
-        try {
-            Map<String, Object> price = new HashMap<String, Object>();
-            Map<String, Object> matrix = new HashMap<>();
-            matrix.put("token", matrixReference);
-            price.put("priceMatrix", new Map[]{matrix});
-
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            Writer writer = Files.newBufferedWriter(Paths.get(jsonFilePath));
-
-            gson.toJson(price, writer);
-
-            writer.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
+        requestSpec = new RequestSpecBuilder()
+                .setBaseUri(uri)
+                .setContentType(ContentType.JSON)
+                .setBody(jsonBody)
+                .build();
     }
 }
