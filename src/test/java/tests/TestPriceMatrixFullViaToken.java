@@ -4,11 +4,13 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import specs.PostPriceMatrixFullViaToken;
 import utilities.DataPOJO;
 import utilities.ExcelData;
+import utilities.Log;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -17,7 +19,7 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
-public class TestFullPriceMatrixViaToken {
+public class TestPriceMatrixFullViaToken {
     private static final String url = "/price/get";
 
     @DataProvider(name ="ExcelData")
@@ -46,18 +48,18 @@ public class TestFullPriceMatrixViaToken {
         postPriceMatrixFullViaToken.createRequestSpecification(jsonParams.getToken());
         postPriceMatrixFullViaToken.createResponseSpecification();
 
-        given()
+        String status = given()
                 .spec(postPriceMatrixFullViaToken.requestSpec)
-                .log().all()
                 .when()
                 .post(url)
                 .then()
                 .spec(postPriceMatrixFullViaToken.responseSpec)
-                .log().all();
-//                .extract()
-//                .path("result.startDate" );
+                .extract()
+                .path("status" );
 
-//        Assert.assertEquals(startDate, "2020-07-20");
+        Assert.assertEquals(status, "success");
+
+        Log.info("status: " + status + "for token: " + jsonParams.getToken());
     }
 
 }

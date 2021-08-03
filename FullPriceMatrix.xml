@@ -2,8 +2,8 @@
 <suite name="Partial price Matrix" parallel="false">
     <test name="Price API" parallel="false">
         <classes>
-            <class name="tests.TestPartialPriceMatrix" />
-            <class name="tests.TestFullPriceMatrixViaToken" />
+            <class name="tests.TestPriceMatrixFull" />
+            <class name="tests.TestPriceMatrixFullViaToken" />
         </classes>
     </test>
 </suite>

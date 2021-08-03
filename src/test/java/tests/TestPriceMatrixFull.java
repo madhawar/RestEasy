@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import org.testng.annotations.Test;
 import specs.PostPriceMatrixFull;
 import utilities.Init;
+import utilities.Log;
 
 import java.io.Writer;
 import java.nio.file.Files;
@@ -49,6 +50,8 @@ public class TestPriceMatrixFull extends Init {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+        Log.info("Written the token to JSON file: " + result);
     }
 
 }
