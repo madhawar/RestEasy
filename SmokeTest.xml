@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Smoke Test" parallel="false">
+    <test name="Wapp" parallel="false">
+        <classes>
+            <class name="wapp.WAPP_StaticTreeAPI" />
+            <class name="wapp.WAPP_LocationTreeAPI" />
+            <class name="wapp.WAPP_FCOCountriesAPI" />
+            <class name="wapp.WAPP_FCOCountriesAllAPI" />
+            <class name="wapp.WAPP_PriceStaticTreeAPI" />
+            <class name="wapp.WAPP_FCOStaticVersionExpireAPI" />
+            <class name="wapp.WAPP_PriceStatusAPI" />
+            <class name="wapp.WAPP_PriceChangeLogsAPI" />
+            <class name="wapp.WAPP_FactorPopup" />
+            <class name="wapp.WAPP_FactorPopupAll" />
+        </classes>
+    </test>
+</suite>

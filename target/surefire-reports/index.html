@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
+      <br/>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" title="Collapse/expand all the suites" class="collapse-all-link">
+          <img src="collapseall.gif" class="collapse-all-icon">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" panel-name="suite-Smoke_Test" class="navigator-link">
+              <span class="suite-name border-failed">Smoke Test</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" panel-name="test-xml-Smoke_Test" class="navigator-link ">
+                    <span>SmokeTest.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="testlist-Smoke_Test" class="navigator-link ">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="group-Smoke_Test" class="navigator-link ">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="times-Smoke_Test" class="navigator-link ">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="reporter-Smoke_Test" class="navigator-link ">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="ignored-methods-Smoke_Test" class="navigator-link ">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="chronological-Smoke_Test" class="navigator-link ">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">10 methods, 1 failed,   9 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Smoke_Test" class="hide-methods failed suite-Smoke_Test"> (hide)</a> <!-- hide-methods failed suite-Smoke_Test -->
+                      <a href="#" panel-name="suite-Smoke_Test" class="show-methods failed suite-Smoke_Test"> (show)</a> <!-- show-methods failed suite-Smoke_Test -->
+                    </span>
+                    <div class="method-list-content failed suite-Smoke_Test">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Smoke_Test" title="wapp.WAPP_FactorPopup" class="method navigator-link" hash-for-method="status200AndContentJSON">status200AndContentJSON</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Smoke_Test -->
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Smoke_Test" class="hide-methods passed suite-Smoke_Test"> (hide)</a> <!-- hide-methods passed suite-Smoke_Test -->
+                      <a href="#" panel-name="suite-Smoke_Test" class="show-methods passed suite-Smoke_Test"> (show)</a> <!-- show-methods passed suite-Smoke_Test -->
+                    </span>
+                    <div class="method-list-content passed suite-Smoke_Test">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Smoke_Test" title="wapp.WAPP_StaticTreeAPI" class="method navigator-link" hash-for-method="status200AndContentJSON">status200AndContentJSON</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Smoke_Test" title="wapp.WAPP_PriceStatusAPI" class="method navigator-link" hash-for-method="status200AndContentJSON">status200AndContentJSON</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Smoke_Test" title="wapp.WAPP_FCOStaticVersionExpireAPI" class="method navigator-link" hash-for-method="status200AndContentJSON">status200AndContentJSON</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Smoke_Test" title="wapp.WAPP_FactorPopupAll" class="method navigator-link" hash-for-method="status200AndContentJSON">status200AndContentJSON</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Smoke_Test" title="wapp.WAPP_FCOCountriesAllAPI" class="method navigator-link" hash-for-method="status200AndContentJSON">status200AndContentJSON</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Smoke_Test" title="wapp.WAPP_LocationTreeAPI" class="method navigator-link" hash-for-method="status200AndContentJSON">status200AndContentJSON</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Smoke_Test" title="wapp.WAPP_PriceStaticTreeAPI" class="method navigator-link" hash-for-method="status200AndContentJSON">status200AndContentJSON</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Smoke_Test" title="wapp.WAPP_PriceChangeLogsAPI" class="method navigator-link" hash-for-method="status200AndContentJSON">status200AndContentJSON</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Smoke_Test" title="wapp.WAPP_FCOCountriesAPI" class="method navigator-link" hash-for-method="status200AndContentJSON">status200AndContentJSON</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Smoke_Test -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-Smoke_Test" class="panel Smoke_Test">
+          <div class="suite-Smoke_Test-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">wapp.WAPP_FactorPopup</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="status200AndContentJSON">
+                  </a> <!-- status200AndContentJSON -->
+                  <span class="method-name">status200AndContentJSON</span>
+                  <div class="stack-trace">java.lang.AssertionError: 1 expectation failed.
+Expected content-type &quot;JSON&quot; doesn&apos;t match actual content-type &quot;&quot;.
+
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrap.callConstructor(ConstructorSite.java:84)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallConstructor(CallSiteArray.java:59)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:263)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure.validate(ResponseSpecificationImpl.groovy:493)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure$validate$1.call(Unknown Source)
+	at io.restassured.internal.ResponseSpecificationImpl.validate(ResponseSpecificationImpl.groovy:92)
+	at io.restassured.internal.ValidatableResponseOptionsImpl.spec(ValidatableResponseOptionsImpl.java:288)
+	at io.restassured.internal.ValidatableResponseImpl.super$2$spec(ValidatableResponseImpl.groovy)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1268)
+	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.invokeMethodOnSuperN(ScriptBytecodeAdapter.java:144)
+	at io.restassured.internal.ValidatableResponseImpl.spec(ValidatableResponseImpl.groovy:76)
+	at io.restassured.internal.ValidatableResponseImpl.spec(ValidatableResponseImpl.groovy)
+	at wapp.WAPP_FactorPopup.status200AndContentJSON(WAPP_FactorPopup.java:29)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 42 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Smoke_Test-class-failed -->
+          <div class="suite-Smoke_Test-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">wapp.WAPP_PriceStatusAPI</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="status200AndContentJSON">
+                  </a> <!-- status200AndContentJSON -->
+                  <span class="method-name">status200AndContentJSON</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Smoke_Test-class-passed -->
+          <div class="suite-Smoke_Test-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">wapp.WAPP_PriceChangeLogsAPI</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="status200AndContentJSON">
+                  </a> <!-- status200AndContentJSON -->
+                  <span class="method-name">status200AndContentJSON</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Smoke_Test-class-passed -->
+          <div class="suite-Smoke_Test-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">wapp.WAPP_FCOCountriesAllAPI</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="status200AndContentJSON">
+                  </a> <!-- status200AndContentJSON -->
+                  <span class="method-name">status200AndContentJSON</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Smoke_Test-class-passed -->
+          <div class="suite-Smoke_Test-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">wapp.WAPP_FCOStaticVersionExpireAPI</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="status200AndContentJSON">
+                  </a> <!-- status200AndContentJSON -->
+                  <span class="method-name">status200AndContentJSON</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Smoke_Test-class-passed -->
+          <div class="suite-Smoke_Test-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">wapp.WAPP_StaticTreeAPI</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="status200AndContentJSON">
+                  </a> <!-- status200AndContentJSON -->
+                  <span class="method-name">status200AndContentJSON</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Smoke_Test-class-passed -->
+          <div class="suite-Smoke_Test-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">wapp.WAPP_FactorPopupAll</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="status200AndContentJSON">
+                  </a> <!-- status200AndContentJSON -->
+                  <span class="method-name">status200AndContentJSON</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Smoke_Test-class-passed -->
+          <div class="suite-Smoke_Test-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">wapp.WAPP_FCOCountriesAPI</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="status200AndContentJSON">
+                  </a> <!-- status200AndContentJSON -->
+                  <span class="method-name">status200AndContentJSON</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Smoke_Test-class-passed -->
+          <div class="suite-Smoke_Test-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">wapp.WAPP_PriceStaticTreeAPI</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="status200AndContentJSON">
+                  </a> <!-- status200AndContentJSON -->
+                  <span class="method-name">status200AndContentJSON</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Smoke_Test-class-passed -->
+          <div class="suite-Smoke_Test-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">wapp.WAPP_LocationTreeAPI</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="status200AndContentJSON">
+                  </a> <!-- status200AndContentJSON -->
+                  <span class="method-name">status200AndContentJSON</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Smoke_Test-class-passed -->
+        </div> <!-- panel Smoke_Test -->
+        <div panel-name="test-xml-Smoke_Test" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">/home/madhawa/IdeaProjects/RestEasy/SmokeTest.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;Smoke Test&quot; guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;Wapp&quot; verbose=&quot;0&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;wapp.WAPP_StaticTreeAPI&quot;/&gt;
+      &lt;class name=&quot;wapp.WAPP_LocationTreeAPI&quot;/&gt;
+      &lt;class name=&quot;wapp.WAPP_FCOCountriesAPI&quot;/&gt;
+      &lt;class name=&quot;wapp.WAPP_FCOCountriesAllAPI&quot;/&gt;
+      &lt;class name=&quot;wapp.WAPP_PriceStaticTreeAPI&quot;/&gt;
+      &lt;class name=&quot;wapp.WAPP_FCOStaticVersionExpireAPI&quot;/&gt;
+      &lt;class name=&quot;wapp.WAPP_PriceStatusAPI&quot;/&gt;
+      &lt;class name=&quot;wapp.WAPP_PriceChangeLogsAPI&quot;/&gt;
+      &lt;class name=&quot;wapp.WAPP_FactorPopup&quot;/&gt;
+      &lt;class name=&quot;wapp.WAPP_FactorPopupAll&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- Wapp --&gt;
+&lt;/suite&gt; &lt;!-- Smoke Test --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-Smoke_Test" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for Smoke Test</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">Wapp (10 classes)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-Smoke_Test" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for Smoke Test</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-Smoke_Test" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for Smoke Test</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_Smoke_Test');
+function tableData_Smoke_Test() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(10);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'status200AndContentJSON')
+data.setCell(0, 2, 'wapp.WAPP_StaticTreeAPI')
+data.setCell(0, 3, 3181);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'status200AndContentJSON')
+data.setCell(1, 2, 'wapp.WAPP_PriceStaticTreeAPI')
+data.setCell(1, 3, 1275);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'status200AndContentJSON')
+data.setCell(2, 2, 'wapp.WAPP_FCOCountriesAllAPI')
+data.setCell(2, 3, 1196);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'status200AndContentJSON')
+data.setCell(3, 2, 'wapp.WAPP_FCOCountriesAPI')
+data.setCell(3, 3, 1194);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'status200AndContentJSON')
+data.setCell(4, 2, 'wapp.WAPP_PriceChangeLogsAPI')
+data.setCell(4, 3, 1177);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'status200AndContentJSON')
+data.setCell(5, 2, 'wapp.WAPP_PriceStatusAPI')
+data.setCell(5, 3, 1137);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'status200AndContentJSON')
+data.setCell(6, 2, 'wapp.WAPP_FactorPopupAll')
+data.setCell(6, 3, 1132);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'status200AndContentJSON')
+data.setCell(7, 2, 'wapp.WAPP_LocationTreeAPI')
+data.setCell(7, 3, 982);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'status200AndContentJSON')
+data.setCell(8, 2, 'wapp.WAPP_FactorPopup')
+data.setCell(8, 3, 945);
+data.setCell(9, 0, 9)
+data.setCell(9, 1, 'status200AndContentJSON')
+data.setCell(9, 2, 'wapp.WAPP_FCOStaticVersionExpireAPI')
+data.setCell(9, 3, 864);
+window.suiteTableData['Smoke_Test']= { tableData: data, tableDiv: 'times-div-Smoke_Test'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 13 seconds</span>
+              <div id="times-div-Smoke_Test">
+              </div> <!-- times-div-Smoke_Test -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-Smoke_Test" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for Smoke Test</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-Smoke_Test" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">0 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-Smoke_Test" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">wapp.WAPP_StaticTreeAPI</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">status200AndContentJSON</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">wapp.WAPP_LocationTreeAPI</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">status200AndContentJSON</span>
+                <span class="method-start">3183 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">wapp.WAPP_FCOCountriesAPI</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">status200AndContentJSON</span>
+                <span class="method-start">4166 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">wapp.WAPP_FCOCountriesAllAPI</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">status200AndContentJSON</span>
+                <span class="method-start">5360 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">wapp.WAPP_PriceStaticTreeAPI</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">status200AndContentJSON</span>
+                <span class="method-start">6556 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">wapp.WAPP_FCOStaticVersionExpireAPI</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">status200AndContentJSON</span>
+                <span class="method-start">7831 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">wapp.WAPP_PriceStatusAPI</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">status200AndContentJSON</span>
+                <span class="method-start">8697 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">wapp.WAPP_PriceChangeLogsAPI</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">status200AndContentJSON</span>
+                <span class="method-start">9834 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">wapp.WAPP_FactorPopup</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">status200AndContentJSON</span>
+                <span class="method-start">11012 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">wapp.WAPP_FactorPopupAll</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">status200AndContentJSON</span>
+                <span class="method-start">11963 ms</span>
+              </div> <!-- test-method -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
+</html>

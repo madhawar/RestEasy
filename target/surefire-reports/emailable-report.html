@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "https://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>TestNG Report</title>
+<style type="text/css">table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}th,td {border:1px solid #009;padding:.25em .5em}th {vertical-align:bottom}td {vertical-align:top}table a {font-weight:bold}.stripe td {background-color: #E6EBF9}.num {text-align:right}.passedodd td {background-color: #3F3}.passedeven td {background-color: #0A0}.skippedodd td {background-color: #DDD}.skippedeven td {background-color: #CCC}.failedodd td,.attn {background-color: #F33}.failedeven td,.stripe .attn {background-color: #D00}.stacktrace {white-space:pre;font-family:monospace}.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}.invisible {display:none}</style>
+</head>
+<body>
+<table>
+<tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
+<tr><th colspan="8">Smoke Test</th></tr>
+<tr><td><a href="#t0">Wapp</a></td><td class="num">9</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">13,115</td><td></td><td></td></tr>
+</table>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Smoke Test</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Wapp &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">wapp.WAPP_FactorPopup</td><td><a href="#m0">status200AndContentJSON</a></td><td rowspan="1">1628149596718</td><td rowspan="1">945</td></tr><tr><th colspan="4">Wapp &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">wapp.WAPP_FCOCountriesAPI</td><td><a href="#m1">status200AndContentJSON</a></td><td rowspan="1">1628149589872</td><td rowspan="1">1194</td></tr><tr class="passedodd"><td rowspan="1">wapp.WAPP_FCOCountriesAllAPI</td><td><a href="#m2">status200AndContentJSON</a></td><td rowspan="1">1628149591066</td><td rowspan="1">1196</td></tr><tr class="passedeven"><td rowspan="1">wapp.WAPP_FCOStaticVersionExpireAPI</td><td><a href="#m3">status200AndContentJSON</a></td><td rowspan="1">1628149593537</td><td rowspan="1">864</td></tr><tr class="passedodd"><td rowspan="1">wapp.WAPP_FactorPopupAll</td><td><a href="#m4">status200AndContentJSON</a></td><td rowspan="1">1628149597669</td><td rowspan="1">1132</td></tr><tr class="passedeven"><td rowspan="1">wapp.WAPP_LocationTreeAPI</td><td><a href="#m5">status200AndContentJSON</a></td><td rowspan="1">1628149588889</td><td rowspan="1">982</td></tr><tr class="passedodd"><td rowspan="1">wapp.WAPP_PriceChangeLogsAPI</td><td><a href="#m6">status200AndContentJSON</a></td><td rowspan="1">1628149595540</td><td rowspan="1">1177</td></tr><tr class="passedeven"><td rowspan="1">wapp.WAPP_PriceStaticTreeAPI</td><td><a href="#m7">status200AndContentJSON</a></td><td rowspan="1">1628149592262</td><td rowspan="1">1275</td></tr><tr class="passedodd"><td rowspan="1">wapp.WAPP_PriceStatusAPI</td><td><a href="#m8">status200AndContentJSON</a></td><td rowspan="1">1628149594403</td><td rowspan="1">1137</td></tr><tr class="passedeven"><td rowspan="1">wapp.WAPP_StaticTreeAPI</td><td><a href="#m9">status200AndContentJSON</a></td><td rowspan="1">1628149585706</td><td rowspan="1">3181</td></tr></tbody>
+</table>
+<h2>Wapp</h2><h3 id="m0">wapp.WAPP_FactorPopup#status200AndContentJSON</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: 1 expectation failed.
+Expected content-type &quot;JSON&quot; doesn&apos;t match actual content-type &quot;&quot;.
+
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrap.callConstructor(ConstructorSite.java:84)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallConstructor(CallSiteArray.java:59)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:263)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure.validate(ResponseSpecificationImpl.groovy:493)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure$validate$1.call(Unknown Source)
+	at io.restassured.internal.ResponseSpecificationImpl.validate(ResponseSpecificationImpl.groovy:92)
+	at io.restassured.internal.ValidatableResponseOptionsImpl.spec(ValidatableResponseOptionsImpl.java:288)
+	at io.restassured.internal.ValidatableResponseImpl.super$2$spec(ValidatableResponseImpl.groovy)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1268)
+	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.invokeMethodOnSuperN(ScriptBytecodeAdapter.java:144)
+	at io.restassured.internal.ValidatableResponseImpl.spec(ValidatableResponseImpl.groovy:76)
+	at io.restassured.internal.ValidatableResponseImpl.spec(ValidatableResponseImpl.groovy)
+	at wapp.WAPP_FactorPopup.status200AndContentJSON(WAPP_FactorPopup.java:29)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 42 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">wapp.WAPP_FCOCountriesAPI#status200AndContentJSON</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">wapp.WAPP_FCOCountriesAllAPI#status200AndContentJSON</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">wapp.WAPP_FCOStaticVersionExpireAPI#status200AndContentJSON</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">wapp.WAPP_FactorPopupAll#status200AndContentJSON</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">wapp.WAPP_LocationTreeAPI#status200AndContentJSON</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">wapp.WAPP_PriceChangeLogsAPI#status200AndContentJSON</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m7">wapp.WAPP_PriceStaticTreeAPI#status200AndContentJSON</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m8">wapp.WAPP_PriceStatusAPI#status200AndContentJSON</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m9">wapp.WAPP_StaticTreeAPI#status200AndContentJSON</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+</body>
+</html>
